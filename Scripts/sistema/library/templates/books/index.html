@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %} CRUD Django {% endblock %}
+
+{% block contenido %} 
+
+<div class="card">
+    <div class="card-header">
+        Lista Empleados <a name="" id="" class="btn btn-success" href="{% url 'create' %}" role="button">Crear Empleado</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleados</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID interno</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tipo ID</th>
+                    <th>ID numero</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for empleado in empleados%}
+                    <table>
+                        <td width="250px">{{ empleado.Id_interno }}</td>
+                        <td width="200px">{{ empleado.Nombre }}</td>
+                        <td width="200px">{{ empleado.Apellido }}</td>
+                        <td width="180px">{{ empleado.Tipo_ID }}</td>
+                        <td width="180px">{{ empleado.Numero_ID }}</td>
+                        <td><a name="" id="" class="btn btn-info" href="{% url 'edit' empleado.Id_interno %}" role="button">Editar</a> <a name="" id="" class="btn btn-danger" href="{% url 'delete' empleado.Id_interno %}" role="button">Borrar</a></td>
+                    </table>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        <div class=" card-footer text-muted">
+
+        </div>
+    </div>
+ 
+</div>
+
+{% endblock %}
